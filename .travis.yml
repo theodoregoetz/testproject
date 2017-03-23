@@ -8,8 +8,8 @@ git:
   depth: 3
 
 before_install:
-  - docker pull fedora:latest
-  - docker pa -a
+  - docker pull fedora
+  - docker ps -a
 
 install:
   - dnf install git python3-numpy
