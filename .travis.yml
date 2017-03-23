@@ -2,7 +2,7 @@ language: python
 sudo: required
 
 python:
-  - "3.6"
+  - "3.5"
 
 services:
   - docker
@@ -12,15 +12,14 @@ git:
 
 install:
   - docker pull fedora
-  - pip install --upgrade coveralls
+  - pip -q install -U coveralls
 
 script:
   - >
-    docker run -t -v ${PWD}:/testproject fedora /bin/sh -c
-    'dnf install -y git python3-numpy;
-    python3.5 -mpip install --upgrade pip tox coveralls;
-    cd testproject;
-    tox -epy35;'
+    docker run -t -v ${PWD}:${PWD}:Z fedora /bin/sh -c
+    "dnf install -qy git python3-{numpy,tox};
+    cd ${PWD};
+    tox -epy35;"
 
 after_script:
     - coveralls
