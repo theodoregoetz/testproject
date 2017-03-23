@@ -9,10 +9,9 @@ git:
 
 before_install:
   - docker pull fedora
-  - docker run -it fedora /bin/bash
 
 script:
-  - docker run fedora /bin/sh -c "dnf install -y git python3-numpy; python3.5 -mpip install --upgrade pip tox coveralls; git clone --depth=3 --branch=master https://github.com/theodoregoetz/testproject.git; cd testproject; tox -epy35; coveralls"
+  - docker run -t fedora /bin/sh -c "dnf install -y git python3-numpy; python3.5 -mpip install --upgrade pip tox coveralls; git clone --depth=3 --branch=master https://github.com/theodoregoetz/testproject.git; cd testproject; tox -epy35; coveralls"
 
 # Build Triggers
 # echo "# `date`" >> .travis.yml
