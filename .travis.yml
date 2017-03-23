@@ -18,3 +18,7 @@ install:
 script:
   - tox -epy35
   - coveralls
+
+# Build Triggers
+# echo "# `date`" >> .travis.yml
+# Wed Mar 22 20:10:59 PDT 2017
