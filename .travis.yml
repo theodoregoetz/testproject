@@ -16,8 +16,10 @@ script:
     'dnf install -y git python3-numpy;
     python3.5 -mpip install --upgrade pip tox coveralls;
     cd testproject;
-    tox -epy35;
-    coveralls;'
+    tox -epy35;'
+
+after_script:
+    - coveralls
 
 # Build Triggers
 # echo "# `date`" >> .travis.yml
