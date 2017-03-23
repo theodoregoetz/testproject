@@ -9,11 +9,13 @@ git:
 
 before_install:
   - docker pull fedora
-  - docker ps -a
+  - docker run -it fedora /bin/bash
 
 install:
   - dnf install git python3-numpy
   - python3.5 -mpip install --upgrade pip tox coveralls
+  - git clone --depth=3 --branch=master https://github.com/theodoregoetz/testproject.git
+  - cd testproject
 
 script:
   - tox -epy35
